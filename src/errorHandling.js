@@ -5,7 +5,7 @@ module.exports = (errorMap, config) => {
 	/* Determines if the response from GraphQL is a definitive error.
 
 	   A response is deemed an error response iff ONE of the following conditions is met:
-	   1. errors array exists AND data object is undefined, null or empty, OR:
+	   1. errors array exists AND it's a an array with more than zero elements OR:
 	   2. errors array exists AND data object exists and all keys in the data object are undefined or null */
 	const isError = (response) => {
 		if (response.errors && Array.isArray(response.errors) && response.errors.length > 0) return true;
