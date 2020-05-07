@@ -8,7 +8,7 @@ module.exports = (errorMap, config) => {
 	   1. errors array exists AND data object is undefined, null or empty, OR:
 	   2. errors array exists AND data object exists and all keys in the data object are undefined or null */
 	const isError = (response) => {
-		if (!response.data && response.errors) return true;
+		if (response.errors && Array.isArray(response.errors) && response.errors.length > 0) return true;
 		if (response.data && response.errors) {
 			let allNull = true;
 			if (Object.keys(response.data).length === 0) return true;
